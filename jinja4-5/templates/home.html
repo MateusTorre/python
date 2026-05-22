@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <title>{% block title %}{% endblock %} - Flask Menu</title>
+</head>
+<body>
+    
+    <div class="menu">
+        <nav>
+            <ul>
+                
+                <li><a href="{{ url_for('home')}}">Home</a></li>
+                <li><a href="{{ url_for('page1')}}">Projetos pro Futuro</a></li>
+                <li><a href="{{ url_for('page2')}}"> Hobbies </a></li>
+            
+            </ul>
+        </nav>
+    </div>
+
+    
+
+
+
+   <div class="home">
+
+    <h3> Quem sou eu? </h3>
+
+    <p>Meu nome é Mateus, sou aluno do colégio Cotemig e estou estudando python</p>
+
+   </div>
+
+</body>
+</html>

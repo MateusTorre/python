@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hobbies</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <!-- Menu Lateral -->
+    <div class="menu">
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('home')}}">Home</a></li>
+                <li><a href="{{ url_for('page1')}}">Projetos pro Futuro</a></li>
+                <li><a href="{{ url_for('page2')}}"> Hobbies </a></li>
+            </ul>
+        </nav>
+    </div>
+    
+    <!-- CONTEÚDO PRINCIPAL (Garante o alinhamento correto ao lado do menu) -->
+    <div class="conteudo">
+        <div class="home">
+            <h2>Meus Hobbies</h2>
+            
+            <ul class="lista-hobbies">
+                <li>Jogar futebol</li>
+                <li>Sair com os amigos</li>
+                <li>Ver filme</li>
+                <li>Dinheiro</li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projetos pro Futuro</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <!-- Menu Lateral -->
+    <div class="menu">
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('home')}}">Home</a></li>
+                <li><a href="{{ url_for('page1')}}">Projetos pro Futuro</a></li>
+                <li><a href="{{ url_for('page2')}}"> Hobbies </a></li>
+            </ul>
+        </nav>
+    </div>
+    
+    <!-- CONTEÚDO PRINCIPAL (Tudo deve ficar aqui dentro) -->
+    <div class="conteudo">
+        <div class="home">
+            <h2>Meus Sonhos</h2>
+            
+            <ul class="lista-sonhos">
+                <li>Viajar para a Itália</li>
+                <li>Construir uma família</li>
+                <li>Ter um emprego muito bom para ser muito rico</li>
+                <li>Mercedes-Benz GT43</li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+</html>
