@@ -1,0 +1,210 @@
+/* Configuração Geral */
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: linear-gradient(135deg, #eef2f7 0%, #d9e2ec 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Container Principal */
+.calc-container {
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06), 0 5px 15px rgba(0, 0, 0, 0.03);
+    width: 100%;
+    max-width: 400px;
+    transition: transform 0.3s ease;
+}
+
+/* Título */
+h1 {
+    color: #102a43;
+    margin-top: 0;
+    margin-bottom: 30px;
+    font-size: 26px;
+    text-align: center;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+/* Grupos de Entrada */
+.input-group {
+    margin-bottom: 22px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #486581;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+input[type="number"], select {
+    width: 100%;
+    padding: 14px 16px;
+    border: 2px solid #bcccdc;
+    border-radius: 10px;
+    font-size: 16px;
+    color: #102a43;
+    background-color: #fff;
+    box-sizing: border-box;
+    transition: all 0.2s ease-in-out;
+    appearance: none; /* Remove seta padrão em alguns navegadores */
+}
+
+/* Customização do Select (Adiciona uma seta elegante) */
+select {
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://w3.org' viewBox='0 0 24 24' fill='none' stroke='%23486581' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    background-size: 16px;
+    padding-right: 40px;
+    cursor: pointer;
+}
+
+input[type="number"]:focus, select:focus {
+    outline: none;
+    border-color: #20639b;
+    box-sizing: border-box;
+    box-shadow: 0 0 0 4px rgba(32, 99, 155, 0.15);
+    background-color: #fff;
+}
+
+/* Botão de Envio */
+.btn-submit {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, #20639b 0%, #134074 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-top: 10px;
+    box-shadow: 0 4px 6px rgba(32, 99, 155, 0.2);
+}
+
+.btn-submit:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 12px rgba(32, 99, 155, 0.3);
+    filter: brightness(1.1);
+}
+
+.btn-submit:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 4px rgba(32, 99, 155, 0.2);
+}
+
+/* Link de Limpar */
+.clear-link-container {
+    text-align: center;
+    margin-top: 24px;
+}
+
+.clear-link {
+    display: inline-block;
+    color: #627d98;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+.clear-link:hover {
+    color: #102a43;
+}
+
+/* Bloco de Resposta do Servidor */
+.server-response {
+    margin-top: 30px;
+    padding: 22px;
+    background-color: #f0f4f8;
+    border: 1px solid #d9e2ec;
+    border-left: 5px solid #244124;
+    border-radius: 10px;
+    animation: fadeIn 0.4s ease-out;
+}
+
+.response-title {
+    display: block;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #627d98;
+    margin-bottom: 14px;
+    font-weight: 700;
+}
+
+.response-body {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.response-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 15px;
+}
+
+.response-row.total {
+    margin-top: 10px;
+    padding-top: 14px;
+    border-top: 2px dashed #d9e2ec;
+}
+
+.response-row .label {
+    color: #486581;
+    font-weight: 500;
+}
+
+.response-row .value {
+    font-weight: 600;
+    color: #102a43;
+}
+
+
+.math-expression {
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+    font-size: 15px;
+    color: #334e68;
+    background: #e4e9f0;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+.badge {
+    background-color: #e3f9e5;
+    color: #1a4b28;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 20px;
+    font-weight: 700;
+    border: 1px solid #bac7be;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

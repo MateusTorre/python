@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Python</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <div class="calc-container">
+        <h1>Calculadora</h1>
+        
+        <form action="/" method="POST">
+            <!-- CAMPO 1: Sempre visível. Muda o texto dinamicamente baseado na operação -->
+            <div class="input-group">
+                <label for="num1">
+                    {% if request.form.get('operacao') == 'baskara' %}
+                        Coeficiente A
+                    {% elif request.form.get('operacao') == 'log' %}
+                        Logaritmando (Número)
+                    {% else %}
+                        Primeiro número
+                    {% endif %}
+                </label>
+                <input type="number" step="any" name="num1" id="num1" required value="{{ request.form.get('num1', '') }}">
+            </div>
+
+            <div class="input-group">
+                <label for="operacao">Operação</label>
+        
+                <select name="operacao" id="operacao">
+                    <option value="+" {% if request.form.get('operacao') == '+' %}selected{% endif %}>+ Somar</option>
+                    <option value="-" {% if request.form.get('operacao') == '-' %}selected{% endif %}>- Subtrair</option>
+                    <option value="*" {% if request.form.get('operacao') == '*' %}selected{% endif %}>* Multiplicar</option>
+                    <option value="/" {% if request.form.get('operacao') == '/' %}selected{% endif %}>/ Dividir</option>
+                    <option value="**" {% if request.form.get('operacao') == '**' %}selected{% endif %}>** Potência</option>
+                    <option value="sqrt" {% if request.form.get('operacao') == 'sqrt' %}selected{% endif %}>√ Raiz Quadrada</option>
+                    <option value="log" {% if request.form.get('operacao') == 'log' %}selected{% endif %}>√ log </option>
+                    <option value="baskara" {% if request.form.get('operacao') == 'baskara' %}selected{% endif %}>Bhaskara</option>
+                </select>
+            </div>
+
+  
+            {% if request.form.get('operacao') != 'sqrt' %}
+            <div class="input-group">
+                <label for="num2">
+                    {% if request.form.get('operacao') == 'baskara' %}
+                        Coeficiente B
+                    {% elif request.form.get('operacao') == 'log' %}
+                        Base do Logaritmo
+                    {% else %}
+                        Segundo número
+                    {% endif %}
+                </label>
+                <input type="number" step="any" name="num2" id="num2" value="{{ request.form.get('num2', '') }}">
+            </div>
+            {% endif %}
+
+           
+            {% if request.form.get('operacao') == 'baskara' %}
+            <div class="input-group">
+                <label for="num3">Coeficiente C</label>
+                <input type="number" step="any" name="num3" id="num3" value="{{ request.form.get('num3', '') }}">
+            </div>
+            {% endif %}
+
+            <button type="submit" class="btn-submit">Calcular</button>
+        </form>
+
+        <div class="clear-link-container">
+            <a href="/" class="clear-link">Limpar / nova conta</a>
+        </div>
+
+        {% if resultado %}
+        <div class="server-response">
+            <span class="response-title">Resposta do Servidor (Python)</span>
+            <div class="response-body">
+                <div class="response-row">
+                    <span class="label">Operação:</span>
+                    <span class="value math-expression">{{ etapas }}</span>
+                </div>
+                <div class="response-row total">
+                    <span class="label">Resultado Final:</span>
+                    <span class="value badge">{{ resultado }}</span>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+
+</body>
+</html>
