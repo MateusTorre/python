@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Figurinhas{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <nav class="nav">
+        <a href="{{ url_for('dashboard.index') }}">Início</a>
+        <a href="{{ url_for('clientes.listar') }}">Clientes</a>
+        <a href="{{ url_for('pedidos.listar') }}">Pedidos</a>
+        <a href="{{ url_for('figurinhas.index') }}">Figurinhas</a>
+    </nav>
+    <main class="container">
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>

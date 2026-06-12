@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+{% block title %}Ofertas de Troca{% endblock %}
+
+{% block content %}
+<h1>Ofertas de Troca</h1>
+<p><a class="btn" href="{{ url_for('figurinhas.cadastrar_oferta') }}">+ Nova oferta</a></p>
+
+{% if ofertas %}
+<table>
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Colecionador</th>
+            <th>Oferece</th>
+            <th>Deseja</th>
+            <th>Data</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for oferta in ofertas %}
+        <tr>
+            <td>{{ oferta.id }}</td>
+            <td>{{ oferta.colecionador.nome }}</td>
+            <td>
+                {% for item in oferta.itens if item.tipo == "oferece" %}
+                    {{ item.figurinha.nome }}{% if not loop.last %}, {% endif %}
+                {% else %}
+                    —
+                {% endfor %}
+            </td>
+            <td>
+                {% for item in oferta.itens if item.tipo == "deseja" %}
+                    {{ item.figurinha.nome }}{% if not loop.last %}, {% endif %}
+                {% else %}
+                    —
+                {% endfor %}
+            </td>
+            <td>{{ oferta.data_criacao.strftime('%d/%m/%Y') }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p class="vazio">Nenhuma oferta cadastrada.</p>
+{% endif %}
+{% endblock %}

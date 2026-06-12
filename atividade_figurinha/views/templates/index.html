@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<h1>Dashboard</h1>
+<p class="subtitulo">Resumo do sistema</p>
+
+<div class="cards">
+    <div class="card">
+        <span class="card-num">{{ total_clientes }}</span>
+        <span class="card-label">Clientes</span>
+    </div>
+    <div class="card">
+        <span class="card-num">{{ total_pedidos }}</span>
+        <span class="card-label">Pedidos</span>
+    </div>
+</div>
+
+<h2>Pedidos recentes</h2>
+{% if pedidos_recentes %}
+<table>
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Cliente</th>
+            <th>Status</th>
+            <th>Data</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for pedido in pedidos_recentes %}
+        <tr>
+            <td>{{ pedido.id }}</td>
+            <td>{{ pedido.cliente.nome }}</td>
+            <td><span class="status-badge status-{{ pedido.status }}">{{ pedido.status }}</span></td>
+            <td>{{ pedido.data_criacao.strftime('%d/%m/%Y %H:%M') }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p class="vazio">Nenhum pedido recente.</p>
+{% endif %}
+{% endblock %}

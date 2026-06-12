@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+{% block title %}Clientes{% endblock %}
+
+{% block content %}
+<h1>Clientes</h1>
+<p><a class="btn" href="{{ url_for('clientes.cadastrar') }}">+ Novo cliente</a></p>
+
+{% if clientes %}
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nome</th>
+            <th>E-mail</th>
+            <th>Telefone</th>
+            <th>Cadastro</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for cliente in clientes %}
+        <tr>
+            <td>{{ cliente.id }}</td>
+            <td>{{ cliente.nome }}</td>
+            <td>{{ cliente.email }}</td>
+            <td>{{ cliente.telefone or '—' }}</td>
+            <td>{{ cliente.data_criacao.strftime('%d/%m/%Y') }}</td>
+            <td class="acoes">
+                <a href="{{ url_for('clientes.editar', cliente_id=cliente.id) }}">Editar</a>
+                <form method="POST" action="{{ url_for('clientes.excluir', cliente_id=cliente.id) }}"
+                      onsubmit="return confirm('Excluir {{ cliente.nome }}?');">
+                    <button type="submit" class="btn-danger">Excluir</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p class="vazio">Nenhum cliente cadastrado.</p>
+{% endif %}
+{% endblock %}
